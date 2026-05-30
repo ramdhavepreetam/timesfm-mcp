@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/ramdhavepreetam/forecast-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/ramdhavepreetam/forecast-mcp/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/forecast-mcp.svg)](https://pypi.org/project/forecast-mcp/)
-[![Docs](https://img.shields.io/badge/docs-online-blue)](https://ramdhavepreetam.github.io/forecast-mcp/)
+[![Docs](https://img.shields.io/badge/docs-GitHub-blue)](https://github.com/ramdhavepreetam/forecast-mcp/tree/main/docs)
 
 **Give any AI agent time-series forecasting superpowers.**
 
@@ -60,13 +60,13 @@ Both backends always return a result — no configuration needed.
 
 ## Documentation
 
-Full docs at **[ramdhavepreetam.github.io/forecast-mcp](https://ramdhavepreetam.github.io/forecast-mcp/)**:
+Full docs in the **[docs/](https://github.com/ramdhavepreetam/forecast-mcp/tree/main/docs)** folder:
 
-- [Getting Started](https://ramdhavepreetam.github.io/forecast-mcp/getting-started/) — installation and first forecast
-- [Client Setup](https://ramdhavepreetam.github.io/forecast-mcp/client-setup/) — Claude Desktop, Claude Code, Cursor configs
-- [Tool Reference](https://ramdhavepreetam.github.io/forecast-mcp/tool-reference/) — full parameter docs
-- [Cookbook](https://ramdhavepreetam.github.io/forecast-mcp/cookbook/) — SaaS MRR, e-commerce demand, traffic, cloud spend
-- [How It Works](https://ramdhavepreetam.github.io/forecast-mcp/how-it-works/) — the math and model
+- [Getting Started](https://github.com/ramdhavepreetam/forecast-mcp/blob/main/docs/getting-started.md) — installation and first forecast
+- [Client Setup](https://github.com/ramdhavepreetam/forecast-mcp/blob/main/docs/client-setup.md) — Claude Desktop, Claude Code, Cursor configs
+- [Tool Reference](https://github.com/ramdhavepreetam/forecast-mcp/blob/main/docs/tool-reference.md) — full parameter docs
+- [Cookbook](https://github.com/ramdhavepreetam/forecast-mcp/blob/main/docs/cookbook.md) — SaaS MRR, e-commerce demand, traffic, cloud spend
+- [How It Works](https://github.com/ramdhavepreetam/forecast-mcp/blob/main/docs/how-it-works.md) — the math and model
 
 ## License
 Apache-2.0

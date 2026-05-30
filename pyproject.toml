@@ -1,6 +1,6 @@
 [project]
 name = "forecast-mcp"
-version = "0.1.1"
+version = "0.1.2"
 description = "An MCP server that gives any AI agent time-series forecasting superpowers (TimesFM 2.5 + statistical baselines)."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -24,6 +24,7 @@ Homepage = "https://github.com/ramdhavepreetam/forecast-mcp"
 Repository = "https://github.com/ramdhavepreetam/forecast-mcp"
 Issues = "https://github.com/ramdhavepreetam/forecast-mcp/issues"
 Changelog = "https://github.com/ramdhavepreetam/forecast-mcp/blob/main/CHANGELOG.md"
+Documentation = "https://github.com/ramdhavepreetam/forecast-mcp/tree/main/docs"
 
 [project.optional-dependencies]
 # The heavy ML backend. Kept optional so the server runs instantly without it.
