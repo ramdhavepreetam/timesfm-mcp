@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "forecast": {
+      "command": "uvx",
+      "args": ["forecast-mcp"]
+    }
+  }
+}
