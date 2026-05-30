@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from forecast_mcp.backends import BaselineBackend, select_backend
+from timesfm_mcp.backends import BaselineBackend, select_backend
 
 
 def _seasonal_series(n=48, season=12):

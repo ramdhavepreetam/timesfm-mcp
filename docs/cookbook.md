@@ -10,7 +10,7 @@ Each example follows the same pattern:
 4. **Actual output** — real numbers from the baseline backend (what you'll actually get)
 5. **Then: backtest** — how to verify the numbers before trusting them
 
-All outputs in this cookbook were produced by running the baseline backend on the shown data. They will reproduce exactly with `pip install forecast-mcp`.
+All outputs in this cookbook were produced by running the baseline backend on the shown data. They will reproduce exactly with `pip install timesfm-mcp`.
 
 ---
 

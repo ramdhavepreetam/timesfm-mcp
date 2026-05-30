@@ -1,8 +1,8 @@
-site_name: forecast-mcp
+site_name: timesfm-mcp
 site_description: Give any AI agent time-series forecasting superpowers.
-site_url: https://github.com/ramdhavepreetam/forecast-mcp/
-repo_url: https://github.com/ramdhavepreetam/forecast-mcp
-repo_name: ramdhavepreetam/forecast-mcp
+site_url: https://github.com/ramdhavepreetam/timesfm-mcp/
+repo_url: https://github.com/ramdhavepreetam/timesfm-mcp
+repo_name: ramdhavepreetam/timesfm-mcp
 edit_uri: edit/main/docs/
 
 theme:
@@ -64,6 +64,6 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/ramdhavepreetam/forecast-mcp
+      link: https://github.com/ramdhavepreetam/timesfm-mcp
     - icon: fontawesome/brands/python
-      link: https://pypi.org/project/forecast-mcp/
+      link: https://pypi.org/project/timesfm-mcp/

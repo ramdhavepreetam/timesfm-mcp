@@ -26,7 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.0] - 2026-05-30
 ### Added
-- Initial release of `forecast-mcp`.
+- Initial release of `timesfm-mcp`.
 - Statistical `BaselineBackend` with seasonal-naive and linear trend forecasting.
 - Support for `TimesFMBackend` wrapping Google's TimesFM 2.5 foundation model (requires `timesfm` extra).
 - `forecast` tool to predict future values with uncertainty bands.

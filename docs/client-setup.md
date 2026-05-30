@@ -11,7 +11,7 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) o
   "mcpServers": {
     "forecast": {
       "command": "uvx",
-      "args": ["forecast-mcp"]
+      "args": ["timesfm-mcp"]
     }
   }
 }
@@ -26,7 +26,7 @@ Restart Claude Desktop. You'll see "forecast" appear in the MCP tools panel.
   "mcpServers": {
     "forecast": {
       "command": "uvx",
-      "args": ["--from", "forecast-mcp[timesfm]", "forecast-mcp"]
+      "args": ["--from", "timesfm-mcp[timesfm]", "timesfm-mcp"]
     }
   }
 }
@@ -40,7 +40,7 @@ Restart Claude Desktop. You'll see "forecast" appear in the MCP tools panel.
 Add to your project's `.mcp.json`, or run the CLI command:
 
 ```bash
-claude mcp add forecast -- uvx forecast-mcp
+claude mcp add forecast -- uvx timesfm-mcp
 ```
 
 Or manually in `.mcp.json`:
@@ -50,7 +50,7 @@ Or manually in `.mcp.json`:
   "mcpServers": {
     "forecast": {
       "command": "uvx",
-      "args": ["forecast-mcp"]
+      "args": ["timesfm-mcp"]
     }
   }
 }
@@ -73,7 +73,7 @@ Open **Settings → MCP** (or `~/.cursor/mcp.json`) and add:
   "mcpServers": {
     "forecast": {
       "command": "uvx",
-      "args": ["forecast-mcp"]
+      "args": ["timesfm-mcp"]
     }
   }
 }
@@ -86,27 +86,27 @@ Restart Cursor. The forecast tools are now available to Cursor's agent.
 The server speaks the standard MCP stdio transport. Start it with:
 
 ```bash
-uvx forecast-mcp          # stdio (default)
-forecast-mcp --http       # HTTP transport on port 8000
+uvx timesfm-mcp          # stdio (default)
+timesfm-mcp --http       # HTTP transport on port 8000
 ```
 
 Set `PORT` to change the HTTP port:
 
 ```bash
-PORT=9000 forecast-mcp --http
+PORT=9000 timesfm-mcp --http
 ```
 
 ## Environment variables
 
 | Variable | Default | Effect |
 |----------|---------|--------|
-| `FORECAST_MCP_BACKEND` | `auto` | Set to `baseline` to force the statistical backend even when TimesFM is installed |
+| `TIMESFM_MCP_BACKEND` | `auto` | Set to `baseline` to force the statistical backend even when TimesFM is installed |
 | `PORT` | `8000` | HTTP port (only used with `--http`) |
 
 ## Troubleshooting
 
 **"No tools found"** — Check that `uvx` is on your PATH (`which uvx`). Install with `pip install uv` or `brew install uv`.
 
-**TimesFM import error** — Run `pip install "forecast-mcp[timesfm]"` and restart the server.
+**TimesFM import error** — Run `pip install "timesfm-mcp[timesfm]"` and restart the server.
 
 **Server not responding** — Check the MCP logs in your client. The server logs startup info to stderr.

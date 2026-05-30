@@ -5,7 +5,7 @@ Calls the forecasting engine directly (no MCP server, no agent required).
 Useful for testing, scripting, or embedding in your own tools.
 
 Install:
-    pip install forecast-mcp
+    pip install timesfm-mcp
 
 Run:
     python examples/python_quickstart.py
@@ -17,7 +17,7 @@ import os
 # Allow running from the repo root without installing.
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
-from forecast_mcp.backends import select_backend
+from timesfm_mcp.backends import select_backend
 
 # --- 1. Basic point forecast ---------------------------------------------------
 
@@ -55,7 +55,7 @@ for pt in result_bands.points:
 
 # --- 3. Backtest: measure historical accuracy ---------------------------------
 
-from forecast_mcp.backends import BaselineBackend
+from timesfm_mcp.backends import BaselineBackend
 
 holdout = 6
 train = mrr[:-holdout]

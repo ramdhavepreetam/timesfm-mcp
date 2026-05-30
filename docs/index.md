@@ -1,8 +1,8 @@
-# forecast-mcp
+# timesfm-mcp
 
 **Give any AI agent time-series forecasting superpowers.**
 
-`forecast-mcp` is an [MCP](https://modelcontextprotocol.io) server that lets Claude Code, Claude Desktop, Cursor, or any MCP-compatible agent forecast a series of numbers — sales, traffic, usage, costs — and reason about the result.
+`timesfm-mcp` is an [MCP](https://modelcontextprotocol.io) server that lets Claude Code, Claude Desktop, Cursor, or any MCP-compatible agent forecast a series of numbers — sales, traffic, usage, costs — and reason about the result.
 
 ![Forecast chart showing historical data, point forecast, and 90% confidence band](assets/forecast_preview.png)
 
@@ -23,14 +23,14 @@ LLM agents can read, write, and run code — but they can't see the future. This
 | Backend | When active | What it needs |
 |---------|------------|---------------|
 | Statistical baseline | Always | Just `numpy` — already a dependency |
-| TimesFM 2.5 (Google) | When installed | `pip install "forecast-mcp[timesfm]"` |
+| TimesFM 2.5 (Google) | When installed | `pip install "timesfm-mcp[timesfm]"` |
 
 The server auto-detects TimesFM and uses it; otherwise it falls back to the baseline. Either way, `forecast` always returns something useful.
 
 ## Quickstart (30 seconds)
 
 ```bash
-uvx forecast-mcp
+uvx timesfm-mcp
 ```
 
 Add to your agent config:
@@ -38,7 +38,7 @@ Add to your agent config:
 ```json
 {
   "mcpServers": {
-    "forecast": { "command": "uvx", "args": ["forecast-mcp"] }
+    "forecast": { "command": "uvx", "args": ["timesfm-mcp"] }
   }
 }
 ```

@@ -1,4 +1,4 @@
-from forecast_mcp.server import backtest
+from timesfm_mcp.server import backtest
 import pytest
 
 def test_backtest_baseline():

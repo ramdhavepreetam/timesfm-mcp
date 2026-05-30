@@ -10,7 +10,7 @@
 === "uvx (recommended — zero install)"
 
     ```bash
-    uvx forecast-mcp
+    uvx timesfm-mcp
     ```
 
     `uvx` runs the latest published version in a temporary environment. No global install needed.
@@ -18,14 +18,14 @@
 === "pip"
 
     ```bash
-    pip install forecast-mcp
+    pip install timesfm-mcp
     forecast-mcp
     ```
 
 === "With TimesFM (foundation model)"
 
     ```bash
-    pip install "forecast-mcp[timesfm]"
+    pip install "timesfm-mcp[timesfm]"
     forecast-mcp
     ```
 

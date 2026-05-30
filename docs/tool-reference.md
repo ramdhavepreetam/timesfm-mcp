@@ -92,7 +92,7 @@ list_backends() -> dict
 {
   "active": "baseline",
   "timesfm_available": false,
-  "hint": "Install the 'timesfm' extra to enable the foundation model: pip install 'forecast-mcp[timesfm]'."
+  "hint": "Install the 'timesfm' extra to enable the foundation model: pip install 'timesfm-mcp[timesfm]'."
 }
 ```
 

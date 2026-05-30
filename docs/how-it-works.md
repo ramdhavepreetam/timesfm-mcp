@@ -6,7 +6,7 @@
 Your agent (Claude, Cursor, …)
        │  MCP (stdio or HTTP)
        ▼
-  forecast-mcp server
+  timesfm-mcp server
        │
        ├── BaselineBackend  ← always available
        └── TimesFMBackend   ← loaded lazily if installed
@@ -42,13 +42,13 @@ Season length is detected via autocorrelation. The algorithm tests lags from 2 t
 
 **Context window**: up to 16,384 historical points. Longer histories are truncated to the most recent 16,384.
 
-**Installation**: `pip install "forecast-mcp[timesfm]"` — adds ~2 GB of dependencies including PyTorch. The model weights (~800 MB) download from Hugging Face on first use.
+**Installation**: `pip install "timesfm-mcp[timesfm]"` — adds ~2 GB of dependencies including PyTorch. The model weights (~800 MB) download from Hugging Face on first use.
 
 ## Backend selection
 
 ```python
-FORECAST_MCP_BACKEND=auto  # (default) use TimesFM if installed, else baseline
-FORECAST_MCP_BACKEND=baseline  # always use the statistical baseline
+TIMESFM_MCP_BACKEND=auto  # (default) use TimesFM if installed, else baseline
+TIMESFM_MCP_BACKEND=baseline  # always use the statistical baseline
 ```
 
 The server checks for TimesFM at startup by attempting `import timesfm`. If the import fails, it silently falls back to the baseline. This means `forecast` always returns a result — even without the ML extra.

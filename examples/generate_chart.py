@@ -13,7 +13,7 @@ import os
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
-from forecast_mcp.backends import BaselineBackend
+from timesfm_mcp.backends import BaselineBackend
 
 # MRR data (24 months)
 history = [

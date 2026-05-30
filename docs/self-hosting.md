@@ -1,17 +1,17 @@
 # Self-Hosting
 
-By default, `forecast-mcp` runs over stdio — the MCP client starts and manages the process. For multi-user or remote deployments, run it as an HTTP server.
+By default, `timesfm-mcp` runs over stdio — the MCP client starts and manages the process. For multi-user or remote deployments, run it as an HTTP server.
 
 ## HTTP transport
 
 ```bash
-forecast-mcp --http
+timesfm-mcp --http
 ```
 
 Default: `0.0.0.0:8000`. Set `PORT` to change the port:
 
 ```bash
-PORT=9000 forecast-mcp --http
+PORT=9000 timesfm-mcp --http
 ```
 
 Point any MCP client that supports HTTP transport at `http://your-host:8000`.
@@ -21,18 +21,18 @@ Point any MCP client that supports HTTP transport at `http://your-host:8000`.
 ```dockerfile
 FROM python:3.12-slim
 
-RUN pip install forecast-mcp
+RUN pip install timesfm-mcp
 
 EXPOSE 8000
 
-CMD ["forecast-mcp", "--http"]
+CMD ["timesfm-mcp", "--http"]
 ```
 
 Build and run:
 
 ```bash
-docker build -t forecast-mcp .
-docker run -p 8000:8000 forecast-mcp
+docker build -t timesfm-mcp .
+docker run -p 8000:8000 timesfm-mcp
 ```
 
 With TimesFM:
@@ -40,11 +40,11 @@ With TimesFM:
 ```dockerfile
 FROM python:3.12-slim
 
-RUN pip install "forecast-mcp[timesfm]"
+RUN pip install "timesfm-mcp[timesfm]"
 
 EXPOSE 8000
 
-CMD ["forecast-mcp", "--http"]
+CMD ["timesfm-mcp", "--http"]
 ```
 
 !!! note
@@ -55,7 +55,7 @@ CMD ["forecast-mcp", "--http"]
 On a resource-constrained host, set the backend env var:
 
 ```bash
-FORECAST_MCP_BACKEND=baseline forecast-mcp --http
+TIMESFM_MCP_BACKEND=baseline timesfm-mcp --http
 ```
 
 This prevents the server from even attempting to import TimesFM.
@@ -66,7 +66,7 @@ The HTTP server doesn't currently expose a `/health` endpoint. Use a simple TCP 
 
 ## Security note
 
-The server does not implement authentication. Do not expose `forecast-mcp --http` directly on a public interface without a reverse proxy with auth (e.g. nginx + basic auth or a JWT middleware). For internal use behind a VPN, the default config is fine.
+The server does not implement authentication. Do not expose `timesfm-mcp --http` directly on a public interface without a reverse proxy with auth (e.g. nginx + basic auth or a JWT middleware). For internal use behind a VPN, the default config is fine.
 
 ## Reverse proxy example (nginx)
 
