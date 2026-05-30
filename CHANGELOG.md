@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-05-29
+### Fixed
+- Corrected GitHub URLs in `pyproject.toml` (`preetam` → `ramdhavepreetam`).
+- Fixed CI badge URL in `README.md`.
+- Excluded `timesfm-master/`, `timesfm.zip`, and development artifacts from the sdist; wheel is now ~12 kB and sdist is lean.
+
+### Added
+- MkDocs Material documentation site with full coverage (getting started, client setup, tool reference, cookbook, how-it-works, limitations, self-hosting).
+- GitHub Actions workflow to build and deploy docs to GitHub Pages on push to `main`.
+- Four cookbook example scenarios (`examples/cookbook/`) with realistic sample data and exact agent prompts.
+- `examples/python_quickstart.py` for direct library usage without an agent.
+- Forecast chart PNG embedded in README for quick visual orientation.
+- `docs` optional dependency group (`mkdocs`, `mkdocs-material`).
+
 ## [0.1.0] - 2026-05-30
 ### Added
 - Initial release of `forecast-mcp`.

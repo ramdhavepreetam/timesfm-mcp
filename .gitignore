@@ -1,9 +1,12 @@
 __pycache__/
 *.pyc
 .venv/
+clean-venv/
 dist/
 build/
+site/
 *.egg-info/
 .pytest_cache/
 .DS_Store
 timesfm-master/
+timesfm.zip

@@ -16,4 +16,4 @@ With [MCP](https://modelcontextprotocol.io), adding forecasting to your favorite
 uvx forecast-mcp
 ```
 
-Check out the repo here: [https://github.com/preetam/forecast-mcp](https://github.com/preetam/forecast-mcp)
+Check out the repo here: [https://github.com/ramdhavepreetam/forecast-mcp](https://github.com/ramdhavepreetam/forecast-mcp)
