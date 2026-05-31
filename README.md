@@ -12,7 +12,7 @@ No ML configuration. No data pipelines. One line to run.
 
 ![Forecast chart: 24-month MRR history with 6-month point forecast and 90% confidence band](https://raw.githubusercontent.com/ramdhavepreetam/timesfm-mcp/main/docs/assets/forecast_preview.png)
 
-*Illustrative — statistical baseline backend. Install the `timesfm` extra to use the full TimesFM 2.5 model.*
+*Chart generated with the statistical baseline. Install the `timesfm` extra (`pip install "timesfm-mcp[timesfm]"`) to use the full TimesFM 2.5 neural model.*
 
 ## Quickstart (30 seconds)
 

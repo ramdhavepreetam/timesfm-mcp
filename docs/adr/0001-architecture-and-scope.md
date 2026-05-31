@@ -34,6 +34,6 @@ community, which later funnels into a hosted API and consulting.
 ## Consequences
 - Anyone can try the server in ~30 seconds; the foundation model is a power-up,
   not a prerequisite.
-- TimesFM 2.5's inference API differs from 1.x/2.0, so `TimesFMBackend` ships as a
-  stub that delegates to the baseline until wired in Phase 2.
+- TimesFM 2.5's inference API differs from 1.x/2.0. `TimesFMBackend` has been verified
+  against the installed 2.5 source and runs end-to-end with PyTorch (Phase 2 complete).
 - The same forecasting core is reusable inside a future Shopify app (idea A).

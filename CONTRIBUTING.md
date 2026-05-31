@@ -1,6 +1,6 @@
 # Contributing
 
-We welcome contributions to `forecast-mcp`!
+We welcome contributions to `timesfm-mcp`!
 
 ## Development Setup
 

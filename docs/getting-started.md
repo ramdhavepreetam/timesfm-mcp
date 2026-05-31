@@ -19,14 +19,14 @@
 
     ```bash
     pip install timesfm-mcp
-    forecast-mcp
+    timesfm-mcp
     ```
 
 === "With TimesFM (foundation model)"
 
     ```bash
     pip install "timesfm-mcp[timesfm]"
-    forecast-mcp
+    timesfm-mcp
     ```
 
     TimesFM 2.5 adds a 200M-parameter neural network that improves accuracy on structured time series. It requires ~2 GB RAM and downloads model weights (~800 MB) on first use.

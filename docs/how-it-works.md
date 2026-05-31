@@ -40,9 +40,9 @@ Season length is detected via autocorrelation. The algorithm tests lags from 2 t
 
 **What it does differently**: Instead of fitting a parametric model, it uses a patched-transformer architecture to directly predict the distribution of future values given the history. It produces native quantile forecasts (deciles 10%–90%) that are used for uncertainty bands.
 
-**Context window**: up to 16,384 historical points. Longer histories are truncated to the most recent 16,384.
+**Context window**: up to 1,024 historical points. Longer histories are truncated to the most recent 1,024.
 
-**Installation**: `pip install "timesfm-mcp[timesfm]"` — adds ~2 GB of dependencies including PyTorch. The model weights (~800 MB) download from Hugging Face on first use.
+**Installation**: `pip install "timesfm-mcp[timesfm]"` — adds PyTorch (~84 MB) plus the model weights (~800 MB) downloaded from Hugging Face on first use.
 
 ## Backend selection
 
@@ -51,7 +51,7 @@ TIMESFM_MCP_BACKEND=auto  # (default) use TimesFM if installed, else baseline
 TIMESFM_MCP_BACKEND=baseline  # always use the statistical baseline
 ```
 
-The server checks for TimesFM at startup by attempting `import timesfm`. If the import fails, it silently falls back to the baseline. This means `forecast` always returns a result — even without the ML extra.
+The server checks for TimesFM at startup by importing `timesfm` and verifying that the PyTorch backend class is present. If PyTorch is not installed (so `timesfm.TimesFM_2p5_200M_torch` is missing), it silently falls back to the baseline. This means `forecast` always returns a result — even without the ML extra.
 
 ## Response design
 

@@ -70,7 +70,7 @@ ax.text(
 # Styling
 ax.set_xlabel("Month", color="#c9d1d9", fontsize=11)
 ax.set_ylabel("MRR (USD)", color="#c9d1d9", fontsize=11)
-ax.set_title("forecast-mcp  ·  SaaS MRR — 24-month history + 6-month forecast", color="#c9d1d9", fontsize=12, pad=12)
+ax.set_title("timesfm-mcp  ·  SaaS MRR — 24-month history + 6-month forecast", color="#c9d1d9", fontsize=12, pad=12)
 ax.tick_params(colors="#8b949e")
 ax.spines["bottom"].set_color("#30363d")
 ax.spines["left"].set_color("#30363d")

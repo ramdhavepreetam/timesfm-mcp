@@ -1,5 +1,5 @@
 """
-forecast-mcp Python quickstart.
+timesfm-mcp Python quickstart.
 
 Calls the forecasting engine directly (no MCP server, no agent required).
 Useful for testing, scripting, or embedding in your own tools.

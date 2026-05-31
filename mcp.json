@@ -1,16 +1,16 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "name": "forecast-mcp",
+  "name": "timesfm-mcp",
   "version": "0.1.0",
   "description": "An MCP server that gives any AI agent time-series forecasting superpowers using TimesFM 2.5 and statistical baselines.",
-  "publisher": "preetam",
+  "publisher": "ramdhavepreetam",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/preetam/forecast-mcp",
-  "repository": "https://github.com/preetam/forecast-mcp",
+  "homepage": "https://github.com/ramdhavepreetam/timesfm-mcp",
+  "repository": "https://github.com/ramdhavepreetam/timesfm-mcp",
   "keywords": ["mcp", "forecasting", "time-series", "timesfm", "claude", "agent"],
   "type": "mcp-server",
   "commands": {
-    "start": "uvx forecast-mcp"
+    "start": "uvx timesfm-mcp"
   },
   "mcp": {
     "tools": [

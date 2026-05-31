@@ -117,13 +117,7 @@ class BaselineBackend:
 
 
 class TimesFMBackend:
-    """Wraps TimesFM 2.5. Model is loaded once, lazily, on first call.
-
-    NOTE: TimesFM 2.5 changed its inference API from 1.x/2.0. The load/predict
-    calls below follow the 2.5 surface but should be verified against the exact
-    installed version (see docs/adr/0001). Until then the server falls back to
-    the baseline automatically.
-    """
+    """Wraps TimesFM 2.5. Model is loaded once, lazily, on first call."""
 
     name = "timesfm"
 
@@ -138,8 +132,8 @@ class TimesFMBackend:
         self._model = timesfm.TimesFM_2p5_200M_torch.from_pretrained("google/timesfm-2.5-200m-pytorch")
         self._model.compile(
             timesfm.ForecastConfig(
-                max_context=16384,
-                max_horizon=1000,
+                max_context=1024,
+                max_horizon=256,
                 normalize_inputs=True,
                 use_continuous_quantile_head=True,
                 force_flip_invariance=True,
@@ -154,8 +148,8 @@ class TimesFMBackend:
         if len(v) < 3:
             raise ValueError("Need at least 3 observations to forecast.")
 
-        if len(v) > 16384:
-            v = v[-16384:]
+        if len(v) > 1024:
+            v = v[-1024:]
 
         season = season_length or _detect_season_length(v)
         
@@ -212,8 +206,10 @@ class TimesFMBackend:
 def select_backend(prefer_timesfm: bool = True) -> Backend:
     if prefer_timesfm:
         try:
-            import timesfm  # noqa: F401
-
+            import timesfm
+            # The class is only set if torch/flax is actually installed.
+            if not hasattr(timesfm, "TimesFM_2p5_200M_torch") and not hasattr(timesfm, "TimesFM_2p5_200M_flax"):
+                raise ImportError("TimesFM backend requires torch or flax — neither found.")
             return TimesFMBackend()
         except Exception:
             pass

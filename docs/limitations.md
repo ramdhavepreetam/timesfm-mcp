@@ -1,6 +1,6 @@
 # Limitations
 
-Be aware of these constraints before putting forecast-mcp outputs in front of stakeholders.
+Be aware of these constraints before putting timesfm-mcp outputs in front of stakeholders.
 
 ## Baseline backend
 
@@ -18,7 +18,7 @@ Be aware of these constraints before putting forecast-mcp outputs in front of st
 
 **Not fine-tuned to your domain.** TimesFM is a zero-shot foundation model. It's broadly accurate but not specialized. A well-tuned Prophet or ARIMA model, fit to your specific series with expert seasonality knowledge, may outperform it.
 
-**Context cap: 16,384 points.** Longer histories are silently truncated to the most recent 16,384. For very long, high-frequency series, this may lose long-run patterns.
+**Context cap: 1,024 points.** Longer histories are silently truncated to the most recent 1,024. For very long, high-frequency series, this may lose long-run patterns.
 
 **Quantile interpolation.** TimesFM natively outputs decile quantiles (10%, 20%, …, 90%). Requested bands outside 80%/90%/95% are linearly interpolated, which is approximate.
 
