@@ -1,6 +1,6 @@
 [project]
 name = "timesfm-mcp"
-version = "0.1.3"
+version = "0.1.4"
 description = "MCP server for Google's TimesFM 2.5 foundation model — give any AI agent zero-config time-series forecasting."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -29,8 +29,13 @@ Changelog = "https://github.com/ramdhavepreetam/timesfm-mcp/blob/main/CHANGELOG.
 Documentation = "https://github.com/ramdhavepreetam/timesfm-mcp/tree/main/docs"
 
 [project.optional-dependencies]
-# The heavy ML backend. Kept optional so the server runs instantly without it.
-timesfm = ["timesfm>=2.5"]
+# TimesFM 2.5 is NOT on PyPI and cannot be installed via this extra.
+# Install it from source first:
+#   git clone https://github.com/google-research/timesfm.git
+#   cd timesfm && pip install -e ".[torch]"
+# then: pip install timesfm-mcp  (into the same environment)
+# The server detects TimesFM at runtime and falls back to the baseline if absent.
+#
 # Optional local-LLM narrative mode (talks to a running Ollama instance via HTTP).
 ollama = ["httpx>=0.27"]
 # Documentation site (MkDocs Material).

@@ -35,12 +35,18 @@ docker build -t timesfm-mcp .
 docker run -p 8000:8000 timesfm-mcp
 ```
 
-With TimesFM:
+With TimesFM (advanced):
+
+TimesFM 2.5 is not on PyPI — the Dockerfile must clone and install it from source:
 
 ```dockerfile
 FROM python:3.12-slim
 
-RUN pip install "timesfm-mcp[timesfm]"
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+
+RUN git clone https://github.com/google-research/timesfm.git /opt/timesfm \
+    && pip install -e "/opt/timesfm[torch]" \
+    && pip install timesfm-mcp
 
 EXPOSE 8000
 
@@ -48,7 +54,7 @@ CMD ["timesfm-mcp", "--http"]
 ```
 
 !!! note
-    The TimesFM image will be ~3 GB and requires a host with at least 4 GB RAM. Model weights are downloaded at first startup.
+    The TimesFM image requires ~16 GB RAM on the host. Model weights (~800 MB) are downloaded at first startup. For most deployments, the baseline-only image above is the right choice.
 
 ## Force baseline only
 

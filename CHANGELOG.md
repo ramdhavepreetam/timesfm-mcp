@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.4] - 2026-06-01
+### Fixed
+- Removed unresolvable `timesfm>=2.5` PyPI dependency from `pyproject.toml` — TimesFM 2.5 is not on PyPI and the constraint could never be satisfied. The `[timesfm]` extra is gone; install instructions now point to the Google Research GitHub source.
+- Corrected RAM requirement for TimesFM from ~2 GB / ~4 GB to ~16 GB (per upstream repo recommendation) across `limitations.md`, `getting-started.md`, `client-setup.md`, `self-hosting.md`, and `how-it-works.md`.
+- All `pip install "timesfm-mcp[timesfm]"` references replaced with the correct from-source install path throughout docs, examples, and the `list_backends` hint returned by the server at runtime.
+- Docker "With TimesFM" example now clones and installs from source instead of using the PyPI extra.
+
 ## [0.1.3] - 2026-05-30
 ### Fixed
 - `select_backend()` now checks for `timesfm.TimesFM_2p5_200M_torch` presence rather than a bare `import timesfm`, so the baseline fallback works correctly when PyTorch is absent.

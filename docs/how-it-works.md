@@ -42,7 +42,7 @@ Season length is detected via autocorrelation. The algorithm tests lags from 2 t
 
 **Context window**: up to 1,024 historical points. Longer histories are truncated to the most recent 1,024.
 
-**Installation**: `pip install "timesfm-mcp[timesfm]"` — adds PyTorch (~84 MB) plus the model weights (~800 MB) downloaded from Hugging Face on first use.
+**Installation**: TimesFM 2.5 is not on PyPI. Clone and install from source (`git clone https://github.com/google-research/timesfm && pip install -e ".[torch]"`), then `pip install timesfm-mcp` into the same environment. The model weights (~800 MB) download from Hugging Face on first use. Requires ~16 GB RAM.
 
 ## Backend selection
 
