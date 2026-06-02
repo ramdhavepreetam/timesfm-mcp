@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "forecast": {
+      "command": "uvx",
+      "args": ["timesfm-mcp"]
+    }
+  }
+}

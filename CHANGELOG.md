@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.7] - 2026-06-01
+### Added
+- Client setup docs expanded from 3 to 8 supported agents:
+  **GitHub Copilot** (VS Code `.vscode/mcp.json`), **Windsurf** (`~/.codeium/windsurf/mcp_config.json`), **Cline** (MCP settings panel), **Continue.dev** (`~/.continue/config.json`), **Zed** (`context_servers` in settings).
+- `examples/vscode-mcp.json` — drop-in `.vscode/mcp.json` for GitHub Copilot / VS Code agent mode.
+- README "Supported clients" table listing all 8 clients with their config locations.
+
 ## [0.1.6] - 2026-06-01
 ### Fixed
 - `list_backends` no longer shows the "install extra" hint when TimesFM is already active — hint now only appears when the baseline is running.

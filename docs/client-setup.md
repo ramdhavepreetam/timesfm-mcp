@@ -2,6 +2,10 @@
 
 Paste the config block for your agent. You only need to do this once.
 
+The baseline (`uvx timesfm-mcp`) works identically in every client below — no extra install needed.
+
+---
+
 ## Claude Desktop
 
 Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows):
@@ -44,6 +48,8 @@ Then update your Claude Desktop config to use the installed binary instead of `u
 
 Allow 1–2 minutes on the first invocation while model weights download and load.
 
+---
+
 ## Claude Code
 
 Add to your project's `.mcp.json`, or run the CLI command:
@@ -73,6 +79,29 @@ Verify it's active:
 
 You should see `forecast` listed with tools `forecast`, `list_backends`, `backtest`.
 
+---
+
+## GitHub Copilot (VS Code)
+
+Requires VS Code 1.96+ with the GitHub Copilot extension and agent mode enabled.
+
+Create `.vscode/mcp.json` in your workspace (or add to your VS Code user `settings.json` under the `"mcp"` key):
+
+```json
+{
+  "servers": {
+    "forecast": {
+      "command": "uvx",
+      "args": ["timesfm-mcp"]
+    }
+  }
+}
+```
+
+Open Copilot Chat, switch to **Agent mode** using the mode picker, and the `forecast`, `list_backends`, and `backtest` tools will be available.
+
+---
+
 ## Cursor
 
 Open **Settings → MCP** (or `~/.cursor/mcp.json`) and add:
@@ -90,6 +119,90 @@ Open **Settings → MCP** (or `~/.cursor/mcp.json`) and add:
 
 Restart Cursor. The forecast tools are now available to Cursor's agent.
 
+---
+
+## Windsurf (Codeium)
+
+Edit `~/.codeium/windsurf/mcp_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "forecast": {
+      "command": "uvx",
+      "args": ["timesfm-mcp"]
+    }
+  }
+}
+```
+
+Restart Windsurf. The tools will appear in the Cascade agent panel.
+
+---
+
+## Cline (VS Code extension)
+
+Open the Cline sidebar → **MCP Servers** tab → **Edit MCP Settings**. Add to `cline_mcp_settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "forecast": {
+      "command": "uvx",
+      "args": ["timesfm-mcp"],
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
+```
+
+The forecast tools will appear in Cline's tool list immediately — no restart needed.
+
+---
+
+## Continue.dev
+
+Edit `~/.continue/config.json` and add to the `mcpServers` array:
+
+```json
+{
+  "mcpServers": [
+    {
+      "name": "forecast",
+      "command": "uvx",
+      "args": ["timesfm-mcp"]
+    }
+  ]
+}
+```
+
+Reload the Continue extension. Use `@forecast` in the chat to invoke the tools.
+
+---
+
+## Zed
+
+Edit `~/.config/zed/settings.json` and add under `context_servers`:
+
+```json
+{
+  "context_servers": {
+    "forecast": {
+      "command": {
+        "path": "uvx",
+        "args": ["timesfm-mcp"]
+      },
+      "settings": {}
+    }
+  }
+}
+```
+
+The forecast tools will be available in Zed's AI assistant panel.
+
+---
+
 ## Any other MCP client
 
 The server speaks the standard MCP stdio transport. Start it with:
@@ -105,12 +218,16 @@ Set `PORT` to change the HTTP port:
 PORT=9000 timesfm-mcp --http
 ```
 
+---
+
 ## Environment variables
 
 | Variable | Default | Effect |
 |----------|---------|--------|
 | `TIMESFM_MCP_BACKEND` | `auto` | Set to `baseline` to force the statistical backend even when TimesFM is installed |
 | `PORT` | `8000` | HTTP port (only used with `--http`) |
+
+---
 
 ## Troubleshooting
 

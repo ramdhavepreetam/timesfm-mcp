@@ -61,12 +61,27 @@ The TimesFM 2.5 source is bundled inside this package (Apache-2.0, Google LLC) �
 | `list_backends` | Report which engine is active (timesfm / baseline) |
 | `backtest` | Hold out the last N points — compare TimesFM vs baseline MAE/sMAPE |
 
+## Supported clients
+
+Works with any MCP-compatible agent. Verified configs in [Client Setup](https://github.com/ramdhavepreetam/timesfm-mcp/blob/main/docs/client-setup.md):
+
+| Client | Config |
+|--------|--------|
+| **Claude Desktop** | `claude_desktop_config.json` |
+| **Claude Code** | `claude mcp add forecast -- uvx timesfm-mcp` |
+| **GitHub Copilot** (VS Code) | `.vscode/mcp.json` |
+| **Cursor** | `~/.cursor/mcp.json` |
+| **Windsurf** | `~/.codeium/windsurf/mcp_config.json` |
+| **Cline** (VS Code) | Cline MCP settings panel |
+| **Continue.dev** | `~/.continue/config.json` |
+| **Zed** | `~/.config/zed/settings.json` |
+
 ## Documentation
 
 Full docs in the **[docs/](https://github.com/ramdhavepreetam/timesfm-mcp/tree/main/docs)** folder:
 
 - [Getting Started](https://github.com/ramdhavepreetam/timesfm-mcp/blob/main/docs/getting-started.md) — installation and first forecast
-- [Client Setup](https://github.com/ramdhavepreetam/timesfm-mcp/blob/main/docs/client-setup.md) — Claude Desktop, Claude Code, Cursor configs
+- [Client Setup](https://github.com/ramdhavepreetam/timesfm-mcp/blob/main/docs/client-setup.md) — config for all 8 supported clients
 - [Tool Reference](https://github.com/ramdhavepreetam/timesfm-mcp/blob/main/docs/tool-reference.md) — full parameter docs
 - [Cookbook](https://github.com/ramdhavepreetam/timesfm-mcp/blob/main/docs/cookbook.md) — SaaS MRR, e-commerce demand, traffic, cloud spend
 - [How It Works](https://github.com/ramdhavepreetam/timesfm-mcp/blob/main/docs/how-it-works.md) — the math and model
