@@ -92,7 +92,7 @@ list_backends() -> dict
 {
   "active": "baseline",
   "timesfm_available": false,
-  "hint": "TimesFM 2.5 must be installed from source. See https://github.com/ramdhavepreetam/timesfm-mcp#enable-timesfm-25-optional-advanced"
+  "hint": "Install the timesfm extra to enable the foundation model: pip install 'timesfm-mcp[timesfm]'"
 }
 ```
 

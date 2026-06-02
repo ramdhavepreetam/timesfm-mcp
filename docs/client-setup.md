@@ -19,29 +19,23 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) o
 
 Restart Claude Desktop. You'll see "forecast" appear in the MCP tools panel.
 
-### With TimesFM enabled (advanced)
-
-TimesFM 2.5 is not on PyPI — install it from source into a virtualenv first:
+### With TimesFM enabled
 
 ```bash
-git clone https://github.com/google-research/timesfm.git
-cd timesfm && pip install -e ".[torch]"
-pip install timesfm-mcp
+pip install "timesfm-mcp[timesfm]"
 ```
 
-Then point Claude Desktop at the `timesfm-mcp` binary in that environment:
+Then update your Claude Desktop config to use the installed binary instead of `uvx`:
 
 ```json
 {
   "mcpServers": {
     "forecast": {
-      "command": "/path/to/your/venv/bin/timesfm-mcp"
+      "command": "timesfm-mcp"
     }
   }
 }
 ```
-
-Replace `/path/to/your/venv` with the path to the virtualenv where you installed both packages (e.g. `~/.venvs/timesfm`).
 
 !!! note
     TimesFM requires ~16 GB RAM and downloads ~800 MB of model weights on first use. Allow 1–2 minutes on the first invocation. Most users should use the `uvx` baseline config above.
@@ -118,6 +112,6 @@ PORT=9000 timesfm-mcp --http
 
 **"No tools found"** — Check that `uvx` is on your PATH (`which uvx`). Install with `pip install uv` or `brew install uv`.
 
-**TimesFM import error** — TimesFM 2.5 must be installed from source (see "With TimesFM enabled" above). `pip install timesfm` installs an old 1.x release with a different API and will not work.
+**TimesFM import error** — Run `pip install "timesfm-mcp[timesfm]"` and restart the server. If `pip install timesfm` was previously run separately, uninstall it first (`pip uninstall timesfm`) to avoid the old 1.x version shadowing the bundled 2.5 source.
 
 **Server not responding** — Check the MCP logs in your client. The server logs startup info to stderr.

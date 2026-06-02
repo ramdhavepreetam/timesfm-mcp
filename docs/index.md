@@ -23,7 +23,7 @@ LLM agents can read, write, and run code — but they can't see the future. This
 | Backend | When active | What it needs |
 |---------|------------|---------------|
 | Statistical baseline | Always | Just `numpy` — already a dependency |
-| TimesFM 2.5 (Google) | When installed | Install from source — see [Getting Started](getting-started.md) |
+| TimesFM 2.5 (Google) | When installed | `pip install "timesfm-mcp[timesfm]"` |
 
 The server auto-detects TimesFM and uses it; otherwise it falls back to the baseline. Either way, `forecast` always returns something useful.
 

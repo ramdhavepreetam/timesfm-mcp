@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.5] - 2026-06-01
+### Added
+- TimesFM 2.5 Python source vendored inside the package (`timesfm_mcp/_timesfm/`, Apache-2.0, Google LLC). `pip install "timesfm-mcp[timesfm]"` now works without a separate git clone. The `[timesfm]` extra pulls in `torch`, `huggingface_hub`, and `safetensors`; model weights (~800 MB) still download from HuggingFace on first use.
+- `_load_timesfm_module()` helper: tries the user's own `timesfm` install first (if it has the 2.5 API), then falls back to the vendored copy. User installs always take priority.
+- `VENDOR.md` attribution file documenting the vendored source and linking to the upstream PyPI issue (google-research/timesfm#432).
+
+### Changed
+- All docs updated: `pip install "timesfm-mcp[timesfm]"` is the one-liner again everywhere (README, getting-started, client-setup, self-hosting, tool-reference, how-it-works, limitations).
+- `select_backend()` simplified — delegates availability check to `_load_timesfm_module()`.
+
+### Notes
+- Vendoring is a temporary measure. When Google publishes TimesFM 2.5 to PyPI (tracked in https://github.com/google-research/timesfm/issues/432), `_timesfm/` will be removed and replaced with a real `timesfm>=2.5` dependency.
+
 ## [0.1.4] - 2026-06-01
 ### Fixed
 - Removed unresolvable `timesfm>=2.5` PyPI dependency from `pyproject.toml` — TimesFM 2.5 is not on PyPI and the constraint could never be satisfied. The `[timesfm]` extra is gone; install instructions now point to the Google Research GitHub source.

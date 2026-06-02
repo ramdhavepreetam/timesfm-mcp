@@ -22,18 +22,14 @@
     timesfm-mcp
     ```
 
-=== "With TimesFM (advanced, from source)"
-
-    TimesFM 2.5 is not on PyPI. Install it from source first, then install `timesfm-mcp` into the same environment:
+=== "With TimesFM (neural backend)"
 
     ```bash
-    git clone https://github.com/google-research/timesfm.git
-    cd timesfm && pip install -e ".[torch]"
-    pip install timesfm-mcp
+    pip install "timesfm-mcp[timesfm]"
     timesfm-mcp
     ```
 
-    TimesFM 2.5 adds a 200M-parameter neural network that improves accuracy on structured time series. It requires ~16 GB RAM and downloads model weights (~800 MB) on first use. The server detects it automatically — no config change needed. The statistical baseline remains the zero-config default.
+    TimesFM 2.5 adds a 200M-parameter neural network that improves accuracy on structured time series. The extra pulls in PyTorch and downloads model weights (~800 MB) from HuggingFace on first use. Requires ~16 GB RAM. The server detects it automatically — no config change needed.
 
 ## Wire up to your agent
 

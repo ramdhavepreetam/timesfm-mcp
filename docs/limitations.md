@@ -14,7 +14,7 @@ Be aware of these constraints before putting timesfm-mcp outputs in front of sta
 
 ## TimesFM backend
 
-**Requires ~16 GB RAM and ~800 MB of model weights.** Not suitable for resource-constrained environments. TimesFM 2.5 must be installed from source (not PyPI) — see [Getting Started](getting-started.md). The first inference call incurs a weight-download and model-load delay of 30–90 seconds.
+**Requires ~16 GB RAM and ~800 MB of model weights.** Not suitable for resource-constrained environments. Install with `pip install "timesfm-mcp[timesfm]"`. The first inference call incurs a weight-download and model-load delay of 30–90 seconds.
 
 **Not fine-tuned to your domain.** TimesFM is a zero-shot foundation model. It's broadly accurate but not specialized. A well-tuned Prophet or ARIMA model, fit to your specific series with expert seasonality knowledge, may outperform it.
 

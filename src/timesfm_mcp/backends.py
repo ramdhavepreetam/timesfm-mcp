@@ -4,8 +4,10 @@ Two implementations behind one interface:
 
 * ``BaselineBackend`` -- pure NumPy seasonal-naive + linear trend. No heavy deps,
   runs instantly. This is what makes the server usable in 30 seconds.
-* ``TimesFMBackend`` -- wraps Google's TimesFM 2.5 foundation model. Loaded lazily
-  and only if the ``timesfm`` extra is installed.
+* ``TimesFMBackend`` -- wraps Google's TimesFM 2.5 foundation model. Loaded lazily.
+  Uses the user's own ``timesfm`` install if present; otherwise falls back to the
+  vendored copy bundled in ``timesfm_mcp._timesfm`` (Apache-2.0, Google LLC).
+  Either way, requires ``torch`` — install via ``pip install "timesfm-mcp[timesfm]"``.
 
 The server auto-selects TimesFM when available and falls back to the baseline,
 so the tool always returns *something* useful.
@@ -116,6 +118,29 @@ class BaselineBackend:
         )
 
 
+def _load_timesfm_module():
+    """Return a timesfm-2.5-compatible module, or None if torch is absent.
+
+    Priority: user's own ``import timesfm`` (if it has the 2.5 API) →
+    vendored ``timesfm_mcp._timesfm`` → None.
+    """
+    # 1. User's own install takes priority.
+    try:
+        import timesfm as _tfm
+        if hasattr(_tfm, "TimesFM_2p5_200M_torch") or hasattr(_tfm, "TimesFM_2p5_200M_flax"):
+            return _tfm
+    except Exception:
+        pass
+    # 2. Bundled vendored copy (requires torch from the [timesfm] extra).
+    try:
+        from timesfm_mcp import _timesfm as _tfm
+        if hasattr(_tfm, "TimesFM_2p5_200M_torch") or hasattr(_tfm, "TimesFM_2p5_200M_flax"):
+            return _tfm
+    except Exception:
+        pass
+    return None
+
+
 class TimesFMBackend:
     """Wraps TimesFM 2.5. Model is loaded once, lazily, on first call."""
 
@@ -127,11 +152,13 @@ class TimesFMBackend:
     def _load(self):
         if self._model is not None:
             return self._model
-        import timesfm  # noqa: F401  (heavy import, only when used)
+        tfm = _load_timesfm_module()
+        if tfm is None:
+            raise ImportError("TimesFM 2.5 requires torch. Install with: pip install 'timesfm-mcp[timesfm]'")
 
-        self._model = timesfm.TimesFM_2p5_200M_torch.from_pretrained("google/timesfm-2.5-200m-pytorch")
+        self._model = tfm.TimesFM_2p5_200M_torch.from_pretrained("google/timesfm-2.5-200m-pytorch")
         self._model.compile(
-            timesfm.ForecastConfig(
+            tfm.ForecastConfig(
                 max_context=1024,
                 max_horizon=256,
                 normalize_inputs=True,
@@ -204,13 +231,6 @@ class TimesFMBackend:
 
 
 def select_backend(prefer_timesfm: bool = True) -> Backend:
-    if prefer_timesfm:
-        try:
-            import timesfm
-            # The class is only set if torch/flax is actually installed.
-            if not hasattr(timesfm, "TimesFM_2p5_200M_torch") and not hasattr(timesfm, "TimesFM_2p5_200M_flax"):
-                raise ImportError("TimesFM backend requires torch or flax — neither found.")
-            return TimesFMBackend()
-        except Exception:
-            pass
+    if prefer_timesfm and _load_timesfm_module() is not None:
+        return TimesFMBackend()
     return BaselineBackend()

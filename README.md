@@ -32,18 +32,15 @@ Add to your Claude Desktop / Claude Code / Cursor config:
 
 Then ask your agent: *"Forecast the next 6 months from this revenue data and tell me what to expect."*
 
-## Enable TimesFM 2.5 (optional, advanced)
-
-TimesFM 2.5 is not on PyPI — install it from source, then install `timesfm-mcp` into the same environment:
+## Enable TimesFM 2.5 (optional)
 
 ```bash
-git clone https://github.com/google-research/timesfm.git
-cd timesfm && pip install -e ".[torch]"
-pip install timesfm-mcp
-timesfm-mcp
+pip install "timesfm-mcp[timesfm]"
 ```
 
-Requires ~16 GB RAM and downloads ~800 MB of model weights on first use. The server auto-detects TimesFM and upgrades to it automatically; no config change needed.
+The TimesFM 2.5 source is bundled inside this package (Apache-2.0, Google LLC), so no separate git clone is needed. The extra pulls in PyTorch and the HuggingFace Hub client. Model weights (~800 MB) download from HuggingFace on first use. Requires ~16 GB RAM.
+
+The server auto-detects TimesFM and upgrades to it automatically — no config change needed.
 
 **You don't need TimesFM to get started.** `uvx timesfm-mcp` works instantly with the built-in statistical baseline — no download, no GPU, no extra install.
 
@@ -51,7 +48,7 @@ Requires ~16 GB RAM and downloads ~800 MB of model weights on first use. The ser
 
 | Backend | When active | What it needs |
 |---------|------------|---------------|
-| **TimesFM 2.5** (Google) | When installed | Install from source — see below |
+| **TimesFM 2.5** (Google) | When installed | `pip install "timesfm-mcp[timesfm]"` |
 | Statistical baseline | Always | Just NumPy — already a dependency |
 
 ## Tools

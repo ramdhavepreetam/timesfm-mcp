@@ -35,18 +35,12 @@ docker build -t timesfm-mcp .
 docker run -p 8000:8000 timesfm-mcp
 ```
 
-With TimesFM (advanced):
-
-TimesFM 2.5 is not on PyPI — the Dockerfile must clone and install it from source:
+With TimesFM:
 
 ```dockerfile
 FROM python:3.12-slim
 
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
-
-RUN git clone https://github.com/google-research/timesfm.git /opt/timesfm \
-    && pip install -e "/opt/timesfm[torch]" \
-    && pip install timesfm-mcp
+RUN pip install "timesfm-mcp[timesfm]"
 
 EXPOSE 8000
 
