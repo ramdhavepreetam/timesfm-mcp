@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.6] - 2026-06-01
+### Fixed
+- `list_backends` no longer shows the "install extra" hint when TimesFM is already active — hint now only appears when the baseline is running.
+- `backtest` renamed internal variable `timesfm` → `tfm_backend` to avoid shadowing the module name.
+- Removed redundant inline comment and trailing whitespace from `TimesFMBackend.forecast()`.
+
+### Changed
+- System requirements made explicit and prominent across all docs:
+  - README: two-tier requirements table (baseline = any machine; TimesFM = ≥16 GB RAM + ~800 MB disk) with "Start with the baseline" recommendation.
+  - `getting-started.md`: requirements table at the top of the page; warning callout before TimesFM install tab.
+  - `limitations.md`: blockquote requirement notice at the top of the TimesFM section.
+  - `client-setup.md`: warning callout with explicit RAM/disk figures before TimesFM config.
+- Baseline consistently described as "recommended for most users / production-ready on any hardware."
+- `list_backends` hint includes RAM requirement so agents can surface it to users.
+
 ## [0.1.5] - 2026-06-01
 ### Added
 - TimesFM 2.5 Python source vendored inside the package (`timesfm_mcp/_timesfm/`, Apache-2.0, Google LLC). `pip install "timesfm-mcp[timesfm]"` now works without a separate git clone. The `[timesfm]` extra pulls in `torch`, `huggingface_hub`, and `safetensors`; model weights (~800 MB) still download from HuggingFace on first use.

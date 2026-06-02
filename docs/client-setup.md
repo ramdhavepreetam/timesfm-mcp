@@ -21,6 +21,11 @@ Restart Claude Desktop. You'll see "forecast" appear in the MCP tools panel.
 
 ### With TimesFM enabled
 
+!!! warning "System requirement: ≥ 16 GB RAM · ~800 MB disk"
+    TimesFM downloads ~800 MB of model weights on first use and requires at least
+    16 GB of RAM. **Most users should use the `uvx` baseline config above** —
+    it works on any machine with no download.
+
 ```bash
 pip install "timesfm-mcp[timesfm]"
 ```
@@ -37,8 +42,7 @@ Then update your Claude Desktop config to use the installed binary instead of `u
 }
 ```
 
-!!! note
-    TimesFM requires ~16 GB RAM and downloads ~800 MB of model weights on first use. Allow 1–2 minutes on the first invocation. Most users should use the `uvx` baseline config above.
+Allow 1–2 minutes on the first invocation while model weights download and load.
 
 ## Claude Code
 

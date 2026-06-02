@@ -56,11 +56,11 @@ def forecast(
 def list_backends() -> dict:
     """Report which forecasting engine is active and why."""
     backend = select_backend(prefer_timesfm=_PREFER_TIMESFM)
-    return {
-        "active": backend.name,
-        "timesfm_available": backend.name == "timesfm",
-        "hint": "Install the timesfm extra to enable the foundation model: pip install 'timesfm-mcp[timesfm]'",
-    }
+    timesfm_active = backend.name == "timesfm"
+    result: dict = {"active": backend.name, "timesfm_available": timesfm_active}
+    if not timesfm_active:
+        result["hint"] = "pip install 'timesfm-mcp[timesfm]' to enable the TimesFM 2.5 neural backend (requires ~16 GB RAM)."
+    return result
 
 
 @mcp.tool
@@ -104,8 +104,8 @@ def backtest(values: list[float], holdout: int = 6) -> dict:
     # TimesFM
     if _PREFER_TIMESFM:
         try:
-            timesfm = TimesFMBackend()
-            t_res = timesfm.forecast(train, horizon=holdout, quantiles=[], season_length=None)
+            tfm_backend = TimesFMBackend()
+            t_res = tfm_backend.forecast(train, horizon=holdout, quantiles=[], season_length=None)
             t_preds = [p.value for p in t_res.points]
 
             t_mae = sum(abs(a - b) for a, b in zip(test, t_preds)) / holdout

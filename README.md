@@ -34,22 +34,24 @@ Then ask your agent: *"Forecast the next 6 months from this revenue data and tel
 
 ## Enable TimesFM 2.5 (optional)
 
+> **System requirements:** ≥ 16 GB RAM · ~800 MB disk (model weights, downloaded on first use) · PyTorch
+>
+> **Not sure?** Skip this — `uvx timesfm-mcp` already works great on any machine.
+
 ```bash
 pip install "timesfm-mcp[timesfm]"
 ```
 
-The TimesFM 2.5 source is bundled inside this package (Apache-2.0, Google LLC), so no separate git clone is needed. The extra pulls in PyTorch and the HuggingFace Hub client. Model weights (~800 MB) download from HuggingFace on first use. Requires ~16 GB RAM.
-
-The server auto-detects TimesFM and upgrades to it automatically — no config change needed.
-
-**You don't need TimesFM to get started.** `uvx timesfm-mcp` works instantly with the built-in statistical baseline — no download, no GPU, no extra install.
+The TimesFM 2.5 source is bundled inside this package (Apache-2.0, Google LLC) — no separate git clone needed. The server auto-detects it and upgrades automatically; no config change required.
 
 ## Two backends, zero config
 
-| Backend | When active | What it needs |
-|---------|------------|---------------|
-| **TimesFM 2.5** (Google) | When installed | `pip install "timesfm-mcp[timesfm]"` |
-| Statistical baseline | Always | Just NumPy — already a dependency |
+| Backend | When active | System requirement | Install |
+|---------|------------|-------------------|---------|
+| **Statistical baseline** | Always — default | **Any machine** | `uvx timesfm-mcp` |
+| **TimesFM 2.5** (Google) | When installed | **≥ 16 GB RAM + ~800 MB disk** | `pip install "timesfm-mcp[timesfm]"` |
+
+**Start with the baseline.** It runs on any machine, installs in seconds, and delivers production-ready forecasts. Upgrade to TimesFM only if you need the neural model's extra accuracy and have the RAM for it.
 
 ## Tools
 

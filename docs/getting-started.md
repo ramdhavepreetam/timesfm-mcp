@@ -1,9 +1,15 @@
 # Getting Started
 
-## Requirements
+## System requirements
 
-- Python 3.10+
-- An MCP-compatible agent: [Claude Desktop](client-setup.md#claude-desktop), [Claude Code](client-setup.md#claude-code), [Cursor](client-setup.md#cursor), or any other MCP client
+| | **Baseline** *(default)* | **TimesFM 2.5** *(optional)* |
+|---|---|---|
+| RAM | **Any** | **≥ 16 GB** |
+| Disk | Negligible | **~800 MB** (model weights, first use) |
+| Python | 3.10+ | 3.10+ |
+| Extra install | None | `pip install "timesfm-mcp[timesfm]"` |
+
+**Not sure which to use?** Start with the baseline (`uvx timesfm-mcp`). It works on any machine — laptop, CI, cloud VM — and is production-ready. Add TimesFM later if you need the neural model's extra accuracy.
 
 ## Install
 
@@ -24,12 +30,17 @@
 
 === "With TimesFM (neural backend)"
 
+    !!! warning "System requirement: ≥ 16 GB RAM"
+        TimesFM 2.5 requires at least 16 GB of RAM and downloads ~800 MB of model
+        weights from HuggingFace on first use. If your machine has less RAM,
+        use the baseline install above — it's production-ready on any hardware.
+
     ```bash
     pip install "timesfm-mcp[timesfm]"
     timesfm-mcp
     ```
 
-    TimesFM 2.5 adds a 200M-parameter neural network that improves accuracy on structured time series. The extra pulls in PyTorch and downloads model weights (~800 MB) from HuggingFace on first use. Requires ~16 GB RAM. The server detects it automatically — no config change needed.
+    Adds a 200M-parameter neural network that improves accuracy on structured time series. PyTorch and HuggingFace Hub are pulled in automatically. The server detects TimesFM and upgrades silently — no config change needed.
 
 ## Wire up to your agent
 

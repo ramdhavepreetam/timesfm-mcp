@@ -179,8 +179,6 @@ class TimesFMBackend:
             v = v[-1024:]
 
         season = season_length or _detect_season_length(v)
-        
-        # Calculate residual std for volatility reporting in context
         idx = np.arange(len(v))
         slope, intercept = (np.polyfit(idx, v, 1) if len(v) >= 2 else (0.0, v[-1]))
         detrended = v - (slope * idx + intercept)
